@@ -18,7 +18,7 @@
 
 PKG_NAME="librespot"
 PKG_VERSION="6a0657fec6f887fda8276e5c70317dec887b90dd"
-PKG_REV="102"
+PKG_REV="100-alpha2"
 PKG_ARCH="x86_64 arm"
 PKG_ADDON_PROJECTS="Generic RPi RPi2"
 PKG_LICENSE="prop."
@@ -57,30 +57,31 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
 
   # Copy architecture specific librespot executable to bin/ folder
-  ifeq ($(PROJECT),Generic)
-    ifeq ($(ARCH),x86_64)
-      ifeq ($(DEBUG),yes)
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/x86_64/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  if [ "$PROJECT" = "Generic" ]; then
+    if [ "$TARGET_ARCH" = "x86_64" ]; then
+      if [ "$DEBUG" = "yes" ]; then
+        cp $ROOT/packages/addons/service/librespot/binaries/x86_64/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       else
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/x86_64/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
-      endif
-    endif
-  else ifeq ($(PROJECT),RPi)
-    ifeq ($(ARCH),arm)
-      ifeq ($(DEBUG),yes)
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/armel/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+        cp $ROOT/packages/addons/service/librespot/binaries/x86_64/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+      fi
+    fi
+  elif [ "$PROJECT" = "RPi" ]; then
+    if [ "$TARGET_ARCH" = "arm" ]; then
+      if [ "$DEBUG" = "yes" ]; then
+        cp $ROOT/packages/addons/service/librespot/binaries/armel/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       else
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/armel/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
-      endif
-    endif
-  else ifeq ($(PROJECT),RPi2)
-    ifeq ($(ARCH),arm)
-      ifeq ($(DEBUG),yes)
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/armhf/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+        cp $ROOT/packages/addons/service/librespot/binaries/armel/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+      fi
+    fi
+  elif [ "$PROJECT" = "RPi2" ]; then
+    if [ "$TARGET_ARCH" = "arm": ]; then
+      if [ "$DEBUG" = "yes" ]; then
+        cp $ROOT/packages/addons/service/librespot/binaries/armhf/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       else
-        cp $BUILD/$PKG_SOURCE_DIR/binaries/armhf/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
-      endif
-    endif
+        cp $ROOT/packages/addons/service/librespot/binaries/armhf/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
+      fi
+    fi
+  fi
 
 #  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
 

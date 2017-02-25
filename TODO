@@ -1,16 +1,9 @@
 TODO List:
 
-[Current Issues]
 - Determine how to get access to audio device when kodi running. No audio playing at the moment.
 -- Need to add asound.conf file to /storage/config/ folder so that correct device is selected.
 
 - mdns-responder currently conflicts with avahi-daemon on port 5353. This prevents discovery working so spotify apps (e.g. on iOS, android, desktop) can't see there is a Spotify Connect device on the network. If avahi is stopped and librespot is restarted, discovery occurs and subsequently credentials are sourced from the cache.
 
 - After selecting, librespot from the clients app, the song is loaded but when play is selected, librespot panics and exits: http://pastebin.com/DXDuKQBJ
-
-[May Not Be Needed Anymore - no longer depends]
-- [Done - Partially] libvorbis, libvorbisfile and libogg currently not being built by LibreELEC default although packages available. Need to build and copy to addon so that addon runs on clean install. Currently copied from Linux Mint 18.1 install.
-
--- Currently need to manually edit libogg and libvorbis package.mk to remove --disable-shared option, thus producing shared libraries. Preferably, this would not be required.
-
 
