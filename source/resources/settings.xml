@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+   <category   label="30100" >
+      <setting label="30101" type="lsep" />
+      <setting label="30104" type="labelenum" id="ls_b" lvalues="30105|30106|30107|30108" />
+   </category>
+   <category   label="30200" >
+      <setting label="30201" type="lsep" />
+      <setting label="30202" type="lsep" />
+      <setting label="30203" type="lsep" />
+      <setting label="30204" type="lsep" />
+      <setting label="30205" type="lsep" />
+      <setting label="30206" type="lsep" />
+      <setting label="30207" type="lsep" />
+   </category>
+</settings>

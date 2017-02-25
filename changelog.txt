@@ -1,0 +1,11 @@
+8.1.102
+- Updated to latest librespot (2017-02-22)
+- Dependencies Changed - No longer need libvorbis, libvorbisfile, libogg, libportaudio2 and their dependent libraries
+- Add arm build support. Untested.
+- 
+
+8.1.101
+- Added compilation of shared libraries (need to manually edit package.mk for libogg and libvorbis to remove "--disable-shared"
+
+8.1.100
+- Initial addon based on service.spotify-connect-web addon by Anton Voyl (awiouy)
