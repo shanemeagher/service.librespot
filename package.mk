@@ -18,7 +18,7 @@
 
 PKG_NAME="librespot"
 PKG_VERSION="6a0657fec6f887fda8276e5c70317dec887b90dd"
-PKG_REV="100-alpha2"
+PKG_REV="1-alpha2"
 PKG_ARCH="x86_64 arm"
 PKG_ADDON_PROJECTS="Generic RPi RPi2"
 PKG_LICENSE="prop."
