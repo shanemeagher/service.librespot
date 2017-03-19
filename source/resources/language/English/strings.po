@@ -75,16 +75,24 @@ msgctxt "#30117"
 msgid "HDMI"
 msgstr ""
 
+msgctxt "#30190"
+msgid "Development"
+msgstr ""
+
+msgctxt "#30191"
+msgid "Debugging Enabled"
+msgstr ""
+
 msgctxt "#30200"
 msgid "Instructions"
 msgstr ""
 
 msgctxt "#30201"
-msgid "1. Copy your spofify_appkey.key the addon's home folder"
+msgid "1. [Not Required for LibreSpot] Copy your spofify_appkey.key the addon's home folder"
 msgstr ""
 
 msgctxt "#30202"
-msgid "2. Optionally enter your Spotify username and password"
+msgid "2. [Not Configured for LibreSpot yet] Optionally enter your Spotify username and password"
 msgstr ""
 
 msgctxt "#30203"

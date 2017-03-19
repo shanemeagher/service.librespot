@@ -18,7 +18,7 @@
 
 PKG_NAME="librespot"
 PKG_VERSION="6a0657fec6f887fda8276e5c70317dec887b90dd"
-PKG_REV="1-alpha2"
+PKG_REV="1-alpha3"
 PKG_ARCH="x86_64 arm"
 PKG_ADDON_PROJECTS="Generic RPi RPi2"
 PKG_LICENSE="prop."
@@ -56,7 +56,7 @@ addon() {
   # Create subfolders
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
 
-  # Copy architecture specific librespot executable to bin/ folder
+  # Copy architecture specific librespot executable to bin/ folder and architecture specific libraries to lib/ folder
   if [ "$PROJECT" = "Generic" ]; then
     if [ "$TARGET_ARCH" = "x86_64" ]; then
       if [ "$DEBUG" = "yes" ]; then
@@ -64,6 +64,7 @@ addon() {
       else
         cp $ROOT/packages/addons/service/librespot/binaries/x86_64/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
+      cp $ROOT/packages/addons/service/librespot/libraries/x86_64/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   elif [ "$PROJECT" = "RPi" ]; then
     if [ "$TARGET_ARCH" = "arm" ]; then
@@ -72,6 +73,7 @@ addon() {
       else
         cp $ROOT/packages/addons/service/librespot/binaries/armel/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
+      cp $ROOT/packages/addons/service/librespot/libraries/armel/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   elif [ "$PROJECT" = "RPi2" ]; then
     if [ "$TARGET_ARCH" = "arm": ]; then
@@ -80,6 +82,7 @@ addon() {
       else
         cp $ROOT/packages/addons/service/librespot/binaries/armhf/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
+      cp $ROOT/packages/addons/service/librespot/libraries/armhf/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   fi
 

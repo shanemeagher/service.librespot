@@ -25,13 +25,31 @@ chmod +x "$ADDON_DIR/bin/librespot"
 mkdir -p "$ADDON_HOME"
 
 # TODO
-# Add bitrate setting (--bitrate) Allowable settings are 96, 160, 320
+# Add bitrate setting (--bitrate). Allowable settings are 96, 160, 320
 # Add username / password setting (--username & --password)
-# Add debugging options -> RUST_BACKTRACE=1 before executable, --verbose as an opt
 # 
 
 cd "$ADDON_DIR"
 
-./bin/librespot --name $HOSTNAME \
-                --cache $ADDON_HOME/cache \
-                --backend alsa
+if [ ! "$ls_o" ]; then
+  echo "Playback device not set"
+  ko="ko"
+fi
+
+# Add debugging options -> RUST_BACKTRACE=1 before executable, --verbose as an opt
+if "$ls_debug" == "true"; then
+  echo "Librespot Debugging is Enabled"
+  RUST_BACKTRACE=1 ./bin/librespot --name $HOSTNAME \
+                                  --device $ls_o \
+                                  --cache $ADDON_HOME/cache \
+                                  --verbose
+else
+  ./bin/librespot --name $HOSTNAME \
+                  --device $ls_o \
+                  --cache $ADDON_HOME/cache
+fi
+
+
+#                --backend alsa \
+#                --username 1261895516 \
+#                --password Latvala16? \

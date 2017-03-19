@@ -1,3 +1,8 @@
+8.1.1-alpha3
+- Fixed Issue #2 by specifying device for librespot to use.
+- Added wizard to detect and select audio playback device to use. Copied from Spotify Web Connect addon for LibreELEC by awiouy (https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/addons/service/spotify-connect-web)
+- Added Debug Options to setting.
+
 8.1.1-alpha2
 - Updated to latest librespot (2017-02-22)
 - Add RaspberryPi arm build support. Untested.

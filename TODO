@@ -4,6 +4,7 @@ TODO List:
 -- Need to add asound.conf file to /storage/config/ folder so that correct device is selected.
 
 - mdns-responder currently conflicts with avahi-daemon on port 5353. This prevents discovery working so spotify apps (e.g. on iOS, android, desktop) can't see there is a Spotify Connect device on the network. If avahi is stopped and librespot is restarted, discovery occurs and subsequently credentials are sourced from the cache.
+-- Add temporary workaround in settings to stop avahi-daemon whilst connecting client, then re-enable avahi-daemon again.
 
 - After selecting, librespot from the clients app, the song is loaded but when play is selected, librespot panics and exits: http://pastebin.com/DXDuKQBJ
-
+-- Device must be specified on LibreELEC. Utilising the wizard from Spotify Web Connect for LibreELEC by awiouy (https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/addons/service/spotify-connect-web) to determine and select device. Pass to librespot with --device option. Currently, alsaaudio.so for x86_64 is tested. Others may not work.

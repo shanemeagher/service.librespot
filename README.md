@@ -1,5 +1,5 @@
 # service.librespot
-*service.librespot* is an LibreELEC service addon based on librespot, 
+*service.librespot* is an LibreELEC service addon based on librespot (https://github.com/plietar/librespot), 
 an open source client library for Spotify. *librespot* enables applications to 
 use Spotify's service, without using the official but closed-source 
 libspotify.
@@ -15,4 +15,4 @@ The librespot library is not compiled directly as of yet. If you know how to
 compile Rust from within LibreELEC feel free to add.
 
 ## Development
-Currently the addon panics on x86_64 on first start (if avahi running) and when trying to play. See TODO file.
+Currently the addon panics on x86_64 (others untested) on first start (if avahi running). See TODO file.
