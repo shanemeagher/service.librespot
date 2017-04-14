@@ -48,8 +48,3 @@ else
                   --device $ls_o \
                   --cache $ADDON_HOME/cache
 fi
-
-
-#                --backend alsa \
-#                --username 1261895516 \
-#                --password Latvala16? \
