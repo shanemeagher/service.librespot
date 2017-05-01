@@ -2,13 +2,18 @@
 <settings>
    <category   label="30100" >
       <setting label="30101" type="lsep" />
-      <setting label="30104" type="labelenum" id="ls_b"     lvalues="30105|30106|30107|30108" />
-      <setting label="30109" type="lsep" />
-      <setting label="30110" type="action"    action="RunScript(/storage/.kodi/addons/service.librespot/wizard.py)" />
-      <setting label="30111" type="text"      id="ls_o"     default=""/>
+      <setting label="30102" type="bool"      id="ls_discovery" default="false"/>
+      <setting label="30212" type="lsep"      visible="!eq(-1,false)" />
+      <setting label="30103" type="text"      id="ls_u"         visible="eq(-2,false)" />
+      <setting label="30104" type="text"      id="ls_p"         option="hidden" visible="eq(-3,false)" />
+      <setting label="30105" type="labelenum" id="ls_b"         lvalues="30106|30107|30108|30109" />
+      <setting               type="sep"/>
+      <setting label="30110" type="lsep" />
+      <setting label="30111" type="action"    action="RunScript(/storage/.kodi/addons/service.librespot/wizard.py)" />
+      <setting label="30112" type="text"      id="ls_o"         default=""/>
    </category>
    <category   label="30190" >
-      <setting label="30191" type="bool"      id="ls_debug" default="false"/>
+      <setting label="30191" type="bool"      id="ls_debug"     default="false"/>
    </category>
    <category   label="30200" >
       <setting label="30201" type="lsep" />
@@ -16,7 +21,5 @@
       <setting label="30203" type="lsep" />
       <setting label="30204" type="lsep" />
       <setting label="30205" type="lsep" />
-      <setting label="30206" type="lsep" />
-      <setting label="30207" type="lsep" />
    </category>
 </settings>

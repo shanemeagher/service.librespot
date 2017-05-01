@@ -17,31 +17,23 @@
 ################################################################################
 
 PKG_NAME="librespot"
-PKG_VERSION="6a0657fec6f887fda8276e5c70317dec887b90dd"
-PKG_REV="1-alpha3"
+PKG_VERSION="30bdcafb7eb7a6e5909f52d09324ae51944c8477"
+PKG_REV="1-alpha4"
 PKG_ARCH="x86_64 arm"
 PKG_ADDON_PROJECTS="Generic RPi RPi2"
 PKG_LICENSE="prop."
 PKG_SITE="https://github.com/plietar/librespot/"
 PKG_URL="https://github.com/plietar/librespot/archive/$PKG_VERSION.zip"
-#PKG_SOURCE_DIR="librespot"
-#PKG_DEPENDS_TARGET="toolchain libvorbis libogg libportaudio2 libjack"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain libogg libvorbis"
 PKG_SECTION="service"
 PKG_SHORTDESC="Librespot: use Spotify Connect through LibreELEC"
-PKG_LONGDESC="Librespot (2017-02-22 - $PKG_VERSION) plays Spotify through LibreELEC using the opensource librespot library and, using a Spotify app as a remote."
+PKG_LONGDESC="Librespot (2017-04-29 - $PKG_VERSION) plays Spotify through LibreELEC using the opensource librespot library and, using a Spotify app as a remote."
 PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_NAME="Librespot"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_MAINTAINER="Shane Meagher (shanemeagher)"
-
-#post_unpack() {
-#  mkdir -p $PKG_BUILD
-#  mv $BUILD/$PKG_SOURCE_DIR/* $PKG_BUILD/
-#  rm -r $BUILD/$PKG_NAME-$PKG_VERSION*
-#}
 
 make_target() {
   : # nop
@@ -55,6 +47,18 @@ addon() {
 
   # Create subfolders
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/
+
+  # Copy librespot to bin folder
+  # Not used until determine how to make librespot using cargo from within LibreELEC
+  #cp -P $(get_build_dir $PKG_NAME)/target/release/$PKG_NAME $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  # Copy libogg library
+  cp -P $(get_build_dir libogg)/.install_pkg/usr/lib/libogg.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+
+  # Copy libvorbis and libvorbisfile libraries
+  cp -P $(get_build_dir libvorbis)/.install_pkg/usr/lib/libvorbis.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+  cp -P $(get_build_dir libvorbis)/.install_pkg/usr/lib/libvorbisfile.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
 
   # Copy architecture specific librespot executable to bin/ folder and architecture specific libraries to lib/ folder
   if [ "$PROJECT" = "Generic" ]; then
@@ -64,7 +68,7 @@ addon() {
       else
         cp $ROOT/packages/addons/service/librespot/binaries/x86_64/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
-      cp $ROOT/packages/addons/service/librespot/libraries/x86_64/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
+      cp $ROOT/packages/addons/service/librespot/libraries/x86_64/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   elif [ "$PROJECT" = "RPi" ]; then
     if [ "$TARGET_ARCH" = "arm" ]; then
@@ -73,51 +77,25 @@ addon() {
       else
         cp $ROOT/packages/addons/service/librespot/binaries/armel/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
-      cp $ROOT/packages/addons/service/librespot/libraries/armel/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
+      cp $ROOT/packages/addons/service/librespot/libraries/armel/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   elif [ "$PROJECT" = "RPi2" ]; then
-    if [ "$TARGET_ARCH" = "arm": ]; then
+    if [ "$TARGET_ARCH" = "arm" ]; then
       if [ "$DEBUG" = "yes" ]; then
         cp $ROOT/packages/addons/service/librespot/binaries/armhf/debug/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       else
         cp $ROOT/packages/addons/service/librespot/binaries/armhf/release/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
       fi
-      cp $ROOT/packages/addons/service/librespot/libraries/armhf/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib/
+      cp $ROOT/packages/addons/service/librespot/libraries/armhf/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     fi
   fi
 
-#  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-
-  # Copy librespot to bin folder
-  # Not used until determine how to make librespot using cargo
-  #cp -P $(get_build_dir $PKG_NAME)/target/release/$PKG_NAME $ADDON_BUILD/$PKG_ADDON_ID/bin
-
-  # Copy libportaudio2 library and create symlink
-#  cp -L $(get_build_dir libportaudio2)/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-#  ln -s $ADDON_BUILD/$PKG_ADDON_ID/lib/libportaudio.so $ADDON_BUILD/$PKG_ADDON_ID/lib/libportaudio.so.2
-
-  # Copy libdb-5.3 library
-#  cp -P $(get_build_dir libdb)/.install_pkg/usr/local/BerkeleyDB.5.3/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-
-  # Copy libjack library
-#  cp -P $(get_build_dir libjack)/.install_pkg/usr/local/lib64/libjack.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-
-  # Copy libvorbis and libvorbisfile libraries
-#  cp -P $(get_build_dir libvorbis)/.install_pkg/usr/lib/libvorbis.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-#  cp -P $(get_build_dir libvorbis)/.install_pkg/usr/lib/libvorbisfile.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-
-  # Copy libogg library
-#  cp -P $(get_build_dir libogg)/.install_pkg/usr/lib/libogg.so* $ADDON_BUILD/$PKG_ADDON_ID/lib/
-
-  # Copy libgcc_s library and create symlink
-#  cp -L $(get_build_dir libgcc)/$TARGET_NAME/libgcc/libgcc_s.so.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/
-#  ln -s $ADDON_BUILD/$PKG_ADDON_ID/lib/libgcc_s.so.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libgcc_
-
-  cp -PR $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID/
+  cp -nPR $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID/
 
   rm -rf $ADDON_BUILD/$PKG_ADDON_ID/cache \
          $ADDON_BUILD/$PKG_ADDON_ID/contrib \
          $ADDON_BUILD/$PKG_ADDON_ID/docs \
+         $ADDON_BUILD/$PKG_ADDON_ID/examples \
          $ADDON_BUILD/$PKG_ADDON_ID/protocol \
          $ADDON_BUILD/$PKG_ADDON_ID/src
 

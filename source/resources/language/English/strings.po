@@ -12,66 +12,70 @@ msgid "Spotify"
 msgstr ""
 
 msgctxt "#30102"
-msgid "Username (optional)"
+msgid "Discovery Mode"
 msgstr ""
 
 msgctxt "#30103"
-msgid "Password"
+msgid "Username"
 msgstr ""
 
 msgctxt "#30104"
-msgid "Bit rate"
+msgid "Password"
 msgstr ""
 
 msgctxt "#30105"
-msgid "-"
+msgid "Bit rate"
 msgstr ""
 
 msgctxt "#30106"
-msgid "90"
+msgid "-"
 msgstr ""
 
 msgctxt "#30107"
-msgid "160"
+msgid "90"
 msgstr ""
 
 msgctxt "#30108"
-msgid "320"
+msgid "160"
 msgstr ""
 
 msgctxt "#30109"
-msgid "ALSA"
+msgid "320"
 msgstr ""
 
 msgctxt "#30110"
-msgid "Configuration wizard"
+msgid "ALSA"
 msgstr ""
 
 msgctxt "#30111"
-msgid "Playback device"
+msgid "Configuration wizard"
 msgstr ""
 
 msgctxt "#30112"
-msgid "Mixer"
+msgid "Playback device"
 msgstr ""
 
 msgctxt "#30113"
-msgid "Initial volume"
+msgid "Mixer"
 msgstr ""
 
 msgctxt "#30114"
-msgid "Playback route"
+msgid "Initial volume"
 msgstr ""
 
 msgctxt "#30115"
-msgid "auto detect"
+msgid "Playback route"
 msgstr ""
 
 msgctxt "#30116"
-msgid "headphone jack"
+msgid "auto detect"
 msgstr ""
 
 msgctxt "#30117"
+msgid "headphone jack"
+msgstr ""
+
+msgctxt "#30118"
 msgid "HDMI"
 msgstr ""
 
@@ -88,31 +92,23 @@ msgid "Instructions"
 msgstr ""
 
 msgctxt "#30201"
-msgid "1. [Not Required for LibreSpot] Copy your spofify_appkey.key the addon's home folder"
+msgid "1. Enter your Spotify username and password if Discovery is not enabled"
 msgstr ""
 
 msgctxt "#30202"
-msgid "2. [Not Configured for LibreSpot yet] Optionally enter your Spotify username and password"
+msgid "2. Configure ALSA with the wizard"
 msgstr ""
 
 msgctxt "#30203"
-msgid "3. Configure ALSA with the wizard"
+msgid "3. Save the settings"
 msgstr ""
 
 msgctxt "#30204"
-msgid "4. Save the settings"
+msgid "4. Play Spotify through the service, using a Spotify app as a remote"
 msgstr ""
 
 msgctxt "#30205"
-msgid "5. Check the service with the web interface at port 4000"
-msgstr ""
-
-msgctxt "#30206"
-msgid "6. Play Spotify through the service, using a Spotify app as a remote"
-msgstr ""
-
-msgctxt "#30207"
-msgid "7. Enjoy!"
+msgid "5. Enjoy!"
 msgstr ""
 
 msgctxt "#30210"
@@ -121,4 +117,8 @@ msgstr ""
 
 msgctxt "#30211"
 msgid "Could not find a playback device"
+msgstr ""
+
+msgctxt "#30212"
+msgid "Note: Discovery doesn't currently work at present"
 msgstr ""

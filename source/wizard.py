@@ -16,22 +16,22 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-import alsaaudio as alsa
+from lib import alsaaudio as alsa
 import xbmcaddon
 import xbmcgui
 
 if __name__ == "__main__":
 
-  addon   = xbmcaddon.Addon("service.spotify-connect-web")
+  addon   = xbmcaddon.Addon("service.librespot")
   dialog  = xbmcgui.Dialog()
   strings = addon.getLocalizedString
 
   while True:
     pcms = alsa.pcms()[1:]
     if len(pcms) == 0:
-      dialog.ok(strings(30210), strings(30211)) 
+      dialog.ok(strings(30211), strings(30212)) 
       break
-    pcmx = dialog.select(strings(30111), pcms)
+    pcmx = dialog.select(strings(30113), pcms)
     if pcmx == -1:
       break
     pcm = pcms[pcmx]
@@ -44,10 +44,10 @@ if __name__ == "__main__":
     if len(mixers) == 0:
       mixer = ""
     else:
-      mixerx = dialog.select(strings(30112), mixers)
+      mixerx = dialog.select(strings(30114), mixers)
       if mixerx == -1:
         continue
       mixer = mixers[mixerx]
-    addon.setSetting("scw_m", mixer)
-    addon.setSetting("scw_o", pcm)
+    addon.setSetting("ls_m", mixer)
+    addon.setSetting("ls_o", pcm)
     break

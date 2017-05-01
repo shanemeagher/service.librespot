@@ -25,8 +25,7 @@ chmod +x "$ADDON_DIR/bin/librespot"
 mkdir -p "$ADDON_HOME"
 
 # TODO
-# Add bitrate setting (--bitrate). Allowable settings are 96, 160, 320
-# Add username / password setting (--username & --password)
+# Add bitrate setting (--bitrate $ls_b). Allowable settings are 96, 160, 320 (Doule Check as Librespot may not be same as Spotify_Connect_Web.
 # 
 
 cd "$ADDON_DIR"
@@ -36,15 +35,32 @@ if [ ! "$ls_o" ]; then
   ko="ko"
 fi
 
+user_pass=""
+echo $ls_discovery
+if [ "$ls_discovery" = "false" ]; then
+  echo "Discovery Mode Disabled. Using Username & Password"
+  if [ "$ls_u" = "" ] | [ "$ls_p" = "" ]; then
+    echo "Username or Password not set. Please check settings"
+  else
+    echo "Starting with discovery disabled"
+    user_pass="--disable-discovery --username $ls_u --password $ls_p"
+  fi
+  ko="ko"
+else
+  echo "Discovery Mode Enabled"
+fi
+
 # Add debugging options -> RUST_BACKTRACE=1 before executable, --verbose as an opt
-if "$ls_debug" == "true"; then
+if "$ls_debug" = "true"; then
   echo "Librespot Debugging is Enabled"
   RUST_BACKTRACE=1 ./bin/librespot --name $HOSTNAME \
                                   --device $ls_o \
+                                  $user_pass \
                                   --cache $ADDON_HOME/cache \
                                   --verbose
 else
   ./bin/librespot --name $HOSTNAME \
-                  --device $ls_o \
+                  --device $ls_o  \
+                  $user_pass \
                   --cache $ADDON_HOME/cache
 fi
