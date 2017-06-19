@@ -1,3 +1,6 @@
+# Note
+Development has moved to https://github.com/awiouy/LibreELEC.tv/tree/librespot/packages/addons/service/librespot with discussion on the LibreELEC forum here: https://forum.libreelec.tv/thread/8438-librespot-addon/
+
 # service.librespot
 *service.librespot* is an LibreELEC service addon based on librespot (https://github.com/plietar/librespot), 
 an open source client library for Spotify. *librespot* enables applications to 
